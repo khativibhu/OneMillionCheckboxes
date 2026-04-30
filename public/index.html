@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkboxes</title>
+    <style>
+        body{
+          background-color: black;
+          color: white;
+        }
+        </style>
+</head>
+<body>
+    <div id="container"> </div>
+
+    <script>
+       const box = document.getElementById("container");
+      
+         new Array(100).fill(null).forEach((_, index)=>{
+             const input= document.createElement("input");
+             const type = "checkbox";
+             input.setAttribute("type", type);
+             box.appendChild(input);
+       });
+       
+    </script>
+    
+</body>
+</html>
