@@ -4,23 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Checkboxes</title>
-    <style>
-        body{
-          background-color: black;
-          color: white;
-        }
-        </style>
+    <link rel="stylesheet" href="style.css">    
 </head>
 <body>
+    <h1>Checkboxes</h1>
+    <p>A tiny playground of clickable squares. Tick away.</p>
     <div id="container"> </div>
 
     <script>
        const box = document.getElementById("container");
-      
-         new Array(100).fill(null).forEach((_, index)=>{
+       const CHECKBOX_COUNT = 100;
+
+         new Array(CHECKBOX_COUNT).fill(null).forEach((_, index)=>{
              const input= document.createElement("input");
-             const type = "checkbox";
-             input.setAttribute("type", type);
+             input.type = "checkbox";
              box.appendChild(input);
        });
        
