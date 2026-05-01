@@ -25,6 +25,7 @@ async function main() {
    socket.on("client:checkbox:change",(data)=>{
    console.log(`[Socket: ${socket.id}]: client:checkbox:change`,data);
    io.emit("server:checkbox:change", data);
+   state.checkboxes[data.index] = data.checked;    //data have {index,checked} values
  });
 
  });
