@@ -26,22 +26,34 @@
          if(input){
             input.checked = checked;
          }
-         
+
         });
 
-         new Array(CHECKBOX_COUNT).fill(null).forEach((_, index)=>{
-             const input= document.createElement("input");
-             input.type = "checkbox";
-             input.id = `checkbox-${index}`;
+       window.addEventListener("load", async()=> {
+         const response = await fetch("/checkboxes", {method: "GET"});
+         const data = response.json();  
 
-             input.addEventListener("change", (event)=>{
-               const checked = event.target.checked;
-               console.log("Checkbox changed",{index,checked});
-               socket.emit("client:checkbox:change",{index,checked});
-             })
-             box.appendChild(input);
-       });
-       
+         if(data && data.checkboxes){
+
+           data.checkboxes.forEach( (serverValue,index)=> {
+                const input= document.createElement("input");
+                input.type = "checkbox";
+                input.id = `checkbox-${index}`;
+                input.checked = serverValue;
+
+                input.addEventListener("change", (event)=>{
+                   const checked = event.target.checked;
+                   console.log("Checkbox changed",{index,checked});
+                   socket.emit("client:checkbox:change",{index,checked});
+                });
+
+                box.appendChild(input);
+           });
+     
+         }
+
+       });  
+ 
     </script>
     
 </body>
